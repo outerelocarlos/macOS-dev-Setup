@@ -88,13 +88,13 @@ fi
 #### Installing extra CLI tools
 
 ```bash
-# - ruby, gcc-8 are linked in `.bash_profile`
+# - ruby, gcc are linked in `.bash_profile`
 # - node@20 (LTS at time of writing) installs npm
 
 brew install \
   git git-lfs gitmoji bash-completion rsync curl openssl readline automake xz zlib \
   osxfuse sshfs htop ncdu direnv pwgen \
-  gcc@8 rust ruby node@20 sqlite3
+  gcc@13 rust ruby node@20 sqlite3
 
 # check out caveats from command above!
 

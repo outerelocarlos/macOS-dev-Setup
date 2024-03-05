@@ -45,10 +45,10 @@ pyenv activate vv311
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR='subl -w'
-export CC="/usr/local/bin/gcc-8"
-export CXX="/usr/local/bin/g++-8"
-# export HOMEBREW_CC="/usr/local/bin/gcc-8"
-# export HOMEBREW_CXX="/usr/local/bin/g++-8"
+export CC="/usr/local/bin/gcc-13"
+export CXX="/usr/local/bin/g++-13"
+# export HOMEBREW_CC="/usr/local/bin/gcc-13"
+# export HOMEBREW_CXX="/usr/local/bin/g++-13"
 export GPG_TTY=$(tty)
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -69,7 +69,7 @@ alias ll='ls --long --sort=age --git --time=modified --time-style=iso'
 alias h='history | tail -n 25'
 alias cls='printf "\033c"'
 alias dff='icdiff --highlight --line-numbers --numlines=3'
-alias gcc='gcc-8'
+alias gcc='gcc-13'
 alias moji='git status && git add . && pre-commit && gitmoji -c'
 alias git-summary='~/git/git-summary/git-summary'
 alias s='subl'
