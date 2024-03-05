@@ -93,7 +93,7 @@ fi
 
 brew install \
   git git-lfs gitmoji bash-completion rsync curl openssl readline automake xz zlib \
-  osxfuse sshfs htop ncdu direnv pwgen \
+  sshfs htop ncdu direnv pwgen \
   gcc@13 rust ruby node@20 sqlite3
 
 # check out caveats from command above!
