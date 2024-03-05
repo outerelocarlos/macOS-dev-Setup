@@ -58,122 +58,70 @@ https://github.com/naokazuterada/MarkdownTOC#usage -->
 
 ## Tech Stack
 
-### Mac Look and Feel
+### Terminal tweaks
 
 ```bash
-# Do you understand zsh internals? I don't.
+# Do you understand zsh internals? I don't
+# The following makes Terminal use bash instead
 chsh -s /bin/bash && reset
-# show hidden files (finder restart needed)
-defaults write com.apple.finder AppleShowAllFiles YES
-# disable google chrome dark mode when Mojave dark mode is enabled
-defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool yes
 ```
 
-<details><summary><b>Apple look & feel optimisations</b></summary><p>
-
-<!-- TODO convert these to https://github.com/msanders/setup/blob/master/defaults.yaml -->
-
-- `System Preferences/General/`
-  - `Show scroll bars:` Always
-  - `Click in the scroll bar to:` Jump to the spot that's clicked
-  - `Recent items:` 50
-- `System Preferences/Keyboard/`
-  - Slide `Key Repeat` to `Fast`
-  - Slide `Delay Until Repeat` to tick one before `Short`
-  - Under `Text`, untick/remove everything
-  - Under `Shortcuts`, tick `Use keyboard navigation to move focus between controls` on the bottom
-  - Under `Input Sources`, set keyboard layout to U.S. (remove U.S. International)
-  - Under `Touch Bar shows`, choose `Expanded Control Strip`
-- `System Preferences/Security & Privacy/`
-  - Under `FileVault`, turn on FileVault
-- `System Preferences/Accessibility/`
-  - Under `Zoom`, tick `Use scroll gesture with modifier keys to zoom:`
-  - Under `Display`, untick `Shake mouse pointer to locate`
-  - Under `Mouse & Trackpad/Trackpad Options...`, tick `Enable dragging/three finger drag`
-- `System Preferences/Trackpad/`
-  - Under `Point & Click`, ticks 0, 1, 1, 0, `Click Medium`
-  - Under `Scroll & Zoom`, ticks 0, 1, 0, 1
-  - Under `Scroll & Zoom`, ticks 0, 1, 1, 1, 1, 1, 1, everything four fingers
-- `System Preferences/Software Update/`
-  - Under `Advanced...`, untick `Download new updates when available`
-- `System Preferences/Dock/`
-  - Untick `Show recent applications in Dock`
-  - Tick `Turn Hiding On`
-- Finder preferences
-  - `General`
-    - `New Finder windows show:` home
-  - `Advanced`
-    - Tick `Show all filename extensions`
-    - `When performing a search:` Search the Current Folder
-- Finder View Options (go home: <kbd>⌘⇧H</kbd>, then <kbd>⌘J</kbd>)
-  - Tick `Always open in List View`
-    - Tick `Browse in List View`
-  - `Group by:` None
-  - `Sort by:` Name
-  - Tick `Calculate all sizes`
-  - Tick `Show Library Folder`
-  - **Click** `Use as Defaults`
-- Finder `View` menu item
-  - `Show Tab Bar`
-  - `Show Path Bar`
-  - `Show Status Bar`
-- TextEdit preferences
-  - `New Document`
-    - `Format`: Plain text
-    - Untick `Check spelling as you type`
-  - `Open and Save`
-    - Untick `Add ".txt" extension to plain text files`
-    - Under `Plain Text File Encoding`, select two times `UTF-8`
-- Screenshot `Options` (to open: <kbd>⌘⇧5</kbd>)
-  - Untick  `Show Floating Thumbnail`
-
-</p></details>
-
-
-### Terminal Look and Feel
-
-#### Homebrew and its essentials
+#### Installing Homebrew
 
 ```bash
-# install homebrew (which installs command-line tools)
+# Installing Homebrew (sort of like apt for Debian/Ubuntu)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-brew tap homebrew/cask
-brew tap buo/cask-upgrade  # `brew cu -a docker` - https://github.com/buo/homebrew-cask-upgrade#usage
-# check whether all is good
-brew doctor
 
-# and some essentials
+# Add Homebrew to the bash environment
+echo 'export PATH="/opt/homebrew/bin:$PATH"' >> ~/.bash_profile
+source ~/.bash_profile
+
+# Check whether all is good
+if brew doctor; then
+    echo "Homebrew is properly installed and ready to use."
+else
+    echo "There is something wrong with your Homebrew installation."
+    exit 1
+fi
+```
+
+#### Installing extra CLI tools
+
+```bash
 # - ruby, gcc-8 are linked in `.bash_profile`
 # - node@14 (LTS at time of writing) installs npm
+
 brew install \
   git git-lfs gitmoji bash-completion rsync curl openssl readline automake xz zlib \
   osxfuse sshfs htop ncdu direnv pwgen \
   gcc@8 rust ruby node@14 sqlite3
+
 # check out caveats from command above!
+
+brew install zenith # fancy htop with persistent network and disk I/O history graphs
+
 # npm installs yarn
 PATH="/usr/local/opt/node@14/bin:$PATH" npm install -g yarn
-```
 
-
-#### iTerm [nerd font](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md)
-
-```bash
-brew install --cask iterm2
-brew install --cask homebrew/cask-fonts/font-inconsolata-lgc-nerd-font
-
-# some blazing fast rust
+# Rust-based utilities
 cargo install ripgrep  # rg (search for regex occurrences in directory, fastest regex implementation in the world)
 cargo install zoxide  # z (cd with auto-complete) - echo 'eval "$(zoxide init bash)"' > ~.bash_profile
-brew install zenith # fancy htop with persistent network and disk I/O history graphs
 cargo install --git https://github.com/ogham/exa.git  # crates.io is heavily outdated at time of writing
 cargo install tealdeer  # rust implementation of tldr (man for lazy people)
 tldr --update  # populate cache
+
 # use exa with icons and git status instead of builtin ls
 # this is in .bash_profile already
 alias ls="exa --all --group-directories-first --icons --level=2"  # default level for --tree
 alias ll="ls --long --sort=age --git --time=modified --time-style=iso"
 ```
 
+#### iTerm [nerd font](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md)
+
+```bash
+brew install --cask iterm2
+brew install --cask homebrew/cask-fonts/font-inconsolata-lgc-nerd-font
+```
 
 #### Casks
 
@@ -239,6 +187,75 @@ mas install 937984704
 # Telegram - macos.telegram.org - set password and enter behaviour after init
 mas install 747648890
 ```
+
+### macOS look & feel
+
+```bash
+# show hidden files (finder restart needed)
+defaults write com.apple.finder AppleShowAllFiles YES
+# disable google chrome dark mode when Mojave dark mode is enabled
+defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool yes
+```
+
+<details><summary><b>Apple look & feel optimisations</b></summary><p>
+
+<!-- TODO convert these to https://github.com/msanders/setup/blob/master/defaults.yaml -->
+
+- `System Preferences/General/`
+  - `Show scroll bars:` Always
+  - `Click in the scroll bar to:` Jump to the spot that's clicked
+  - `Recent items:` 50
+- `System Preferences/Keyboard/`
+  - Slide `Key Repeat` to `Fast`
+  - Slide `Delay Until Repeat` to tick one before `Short`
+  - Under `Text`, untick/remove everything
+  - Under `Shortcuts`, tick `Use keyboard navigation to move focus between controls` on the bottom
+  - Under `Input Sources`, set keyboard layout to U.S. (remove U.S. International)
+  - Under `Touch Bar shows`, choose `Expanded Control Strip`
+- `System Preferences/Security & Privacy/`
+  - Under `FileVault`, turn on FileVault
+- `System Preferences/Accessibility/`
+  - Under `Zoom`, tick `Use scroll gesture with modifier keys to zoom:`
+  - Under `Display`, untick `Shake mouse pointer to locate`
+  - Under `Mouse & Trackpad/Trackpad Options...`, tick `Enable dragging/three finger drag`
+- `System Preferences/Trackpad/`
+  - Under `Point & Click`, ticks 0, 1, 1, 0, `Click Medium`
+  - Under `Scroll & Zoom`, ticks 0, 1, 0, 1
+  - Under `Scroll & Zoom`, ticks 0, 1, 1, 1, 1, 1, 1, everything four fingers
+- `System Preferences/Software Update/`
+  - Under `Advanced...`, untick `Download new updates when available`
+- `System Preferences/Dock/`
+  - Untick `Show recent applications in Dock`
+  - Tick `Turn Hiding On`
+- Finder preferences
+  - `General`
+    - `New Finder windows show:` home
+  - `Advanced`
+    - Tick `Show all filename extensions`
+    - `When performing a search:` Search the Current Folder
+- Finder View Options (go home: <kbd>⌘⇧H</kbd>, then <kbd>⌘J</kbd>)
+  - Tick `Always open in List View`
+    - Tick `Browse in List View`
+  - `Group by:` None
+  - `Sort by:` Name
+  - Tick `Calculate all sizes`
+  - Tick `Show Library Folder`
+  - **Click** `Use as Defaults`
+- Finder `View` menu item
+  - `Show Tab Bar`
+  - `Show Path Bar`
+  - `Show Status Bar`
+- TextEdit preferences
+  - `New Document`
+    - `Format`: Plain text
+    - Untick `Check spelling as you type`
+  - `Open and Save`
+    - Untick `Add ".txt" extension to plain text files`
+    - Under `Plain Text File Encoding`, select two times `UTF-8`
+- Screenshot `Options` (to open: <kbd>⌘⇧5</kbd>)
+  - Untick  `Show Floating Thumbnail`
+
+</p></details>
 
 
 ### Backups
