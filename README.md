@@ -192,13 +192,17 @@ mas install 747648890
 ### macOS Look & Feel
 
 ```bash
-# show hidden files (finder restart needed)
+# Show hidden files (Finder restart needed)
 defaults write com.apple.finder AppleShowAllFiles YES
-# disable google chrome dark mode when Mojave dark mode is enabled
+
+# Disable google chrome dark mode when Mojave dark mode is enabled
 defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool yes
 ```
 
-<details><summary><b>Apple look & feel optimisations</b></summary><p>
+The following is a list of potential changes that you may want to apply on your Mac.
+Note that the list is based on Mac OS X 10.15 so some items may have been moved and/or renamed.
+
+<details><summary><b>Other settings to change</b></summary><p>
 
 <!-- TODO convert these to https://github.com/msanders/setup/blob/master/defaults.yaml -->
 
