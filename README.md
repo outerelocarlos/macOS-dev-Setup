@@ -89,19 +89,19 @@ fi
 
 ```bash
 # - ruby, gcc-8 are linked in `.bash_profile`
-# - node@14 (LTS at time of writing) installs npm
+# - node@20 (LTS at time of writing) installs npm
 
 brew install \
   git git-lfs gitmoji bash-completion rsync curl openssl readline automake xz zlib \
   osxfuse sshfs htop ncdu direnv pwgen \
-  gcc@8 rust ruby node@14 sqlite3
+  gcc@8 rust ruby node@20 sqlite3
 
 # check out caveats from command above!
 
 brew install zenith # fancy htop with persistent network and disk I/O history graphs
 
 # npm installs yarn
-PATH="/usr/local/opt/node@14/bin:$PATH" npm install -g yarn
+PATH="/usr/local/opt/node@20/bin:$PATH" npm install -g yarn
 
 # Rust-based utilities
 cargo install ripgrep  # rg (search for regex occurrences in directory, fastest regex implementation in the world)
