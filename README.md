@@ -17,12 +17,13 @@ https://github.com/naokazuterada/MarkdownTOC#usage -->
 
 - [Notes](#notes)
 - [Tech Stack](#tech-stack)
-  - [Mac Look and Feel](#mac-look-and-feel)
-  - [Terminal Look and Feel](#terminal-look-and-feel)
-    - [Homebrew and its essentials](#homebrew-and-its-essentials)
+  - [Terminal Tweaks](#terminal-tweaks)
+    - [Installing Homebrew](#installing-homebrew)
+    - [Installing extra CLI tools](#installing-extra-cli-tools)
     - [iTerm nerd font](#iterm-nerd-font)
     - [Casks](#casks)
     - [Mac App Store \(MAS\)](#mac-app-store-mas)
+  - [macOS Look & Feel](#macos-look--feel)
   - [Backups](#backups)
   - [pyenv and pyenv-virtualenv](#pyenv-and-pyenv-virtualenv)
   - [Git with 2FA](#git-with-2fa)
@@ -58,7 +59,7 @@ https://github.com/naokazuterada/MarkdownTOC#usage -->
 
 ## Tech Stack
 
-### Terminal tweaks
+### Terminal Tweaks
 
 ```bash
 # Do you understand zsh internals? I don't
@@ -188,7 +189,7 @@ mas install 937984704
 mas install 747648890
 ```
 
-### macOS look & feel
+### macOS Look & Feel
 
 ```bash
 # show hidden files (finder restart needed)
