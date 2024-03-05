@@ -286,7 +286,7 @@ Note: first open Chrome for the first time
   brew install pyenv pyenv-virtualenv
   # get your favourite python versions - github.com/momo-lab/pyenv-install-latest
   git clone https://github.com/momo-lab/pyenv-install-latest.git "$(pyenv root)"/plugins/pyenv-install-latest
-  git clone git://github.com/concordusapps/pyenv-implict.git "$(pyenv root)"/plugins/pyenv-implict
+  git clone https://github.com/concordusapps/pyenv-implict.git "$(pyenv root)"/plugins/pyenv-implict
   pyenv install -l | grep '^\s*[0-9]' # list all available python versions
   pyenv install-latest 2
   pyenv install-latest 3
