@@ -312,11 +312,14 @@ Note: first open Chrome for the first time
   git clone https://github.com/concordusapps/pyenv-implict.git "$(pyenv root)"/plugins/pyenv-implict
   pyenv install -l | grep '^\s*[0-9]' # list all available python versions
   pyenv install-latest 2
-  pyenv install-latest 3
+  # pyenv install-latest 3
+  pyenv install 3.11.8
   pyenv versions  # see currently installed versions
-  pyenv global $(pyenv install-latest --print 3) $(pyenv install-latest --print 2)  # set default versions: prefer py3 over py2
+  # pyenv global $(pyenv install-latest --print 3) $(pyenv install-latest --print 2)  # set default versions: prefer py3 over py2
+  pyenv global 3.11.8 $(pyenv install-latest --print 2)  # set default versions: prefer py3 over py2
   # install virtualenv 'vv' based latest pyenv Python version 3.x, inheriting installed packages
-  pyenv virtualenv $(pyenv install-latest --print 3) --system-site-packages vv
+  # pyenv virtualenv $(pyenv install-latest --print 3) --system-site-packages vv
+  pyenv virtualenv 3.11.8 --system-site-packages vv
   # same for 'vv27' with python 2.7.x
   pyenv virtualenv $(pyenv install-latest --print 2) --system-site-packages vv27
   ```
