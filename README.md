@@ -92,24 +92,41 @@ fi
 # - ruby, gcc are linked in `.bash_profile`
 # - node@20 (LTS at time of writing) installs npm
 
-brew install \
-  git git-lfs gitmoji bash-completion rsync curl openssl readline automake xz zlib \
-  sshfs htop ncdu direnv pwgen \
-  gcc@13 rust ruby node@20 sqlite3
-
-# check out caveats from command above!
-
-brew install zenith # fancy htop with persistent network and disk I/O history graphs
+brew install git              # Version control system
+brew install git-lfs          # Replaces large files with text pointers
+brew install gitmoji          # Emojis on GitHub commit messages
+brew install bash-completion  # Programmable completion for the bash shell
+brew install rsync            # Utility that provides fast incremental file transfer
+brew install curl             # Tool to transfer data from or to a server
+brew install openssl          # Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols
+brew install readline         # Library to provide a set of functions for use by applications that allow users to edit command lines
+brew install automake         # Tool for automatically generating Makefile.in files compliant with the GNU Coding Standards
+brew install xz               # Compression utility based on the LZMA algorithm
+brew install zlib             # Compression library implementing the deflate compression method found in gzip and PKZIP
+brew install sshfs            # Filesystem client based on the SSH File Transfer Protocol
+brew install htop             # Interactive process viewer for Unix systems
+brew install zenith           # Fancy htop with persistent network and disk I/O history graphs
+brew install ncdu             # Disk usage analyzer with an ncurses interface
+brew install direnv           # Environment switcher for the shell
+brew install pwgen            # Password generator which creates cryptographically-secure passwords
+brew install gcc@13           # GNU compiler collection version 13
+brew install rust             # Safe, concurrent, practical language
+brew install ruby             # Dynamic, open source programming language with a focus on simplicity and productivity
+brew install node@20          # JavaScript runtime built on Chrome's V8 JavaScript engine, version 20
+brew install sqlite3          # C library that provides a lightweight disk-based database
 
 # npm installs yarn
 PATH="/usr/local/opt/node@20/bin:$PATH" npm install -g yarn
 
-# Rust-based utilities
-cargo install ripgrep  # rg (search for regex occurrences in directory, fastest regex implementation in the world)
-cargo install zoxide  # z (cd with auto-complete) - echo 'eval "$(zoxide init bash)"' > ~.bash_profile
-cargo install --git https://github.com/ogham/exa.git  # crates.io is heavily outdated at time of writing
-cargo install tealdeer  # rust implementation of tldr (man for lazy people)
-tldr --update  # populate cache
+### Rust-based utilities
+cargo install ripgrep         # Often considered the fastest regex search tool available
+cargo install --git https://github.com/ogham/exa.git  # An improvement over ls with more features and better defaults
+
+cargo install zoxide          # Smarter cd command which remembers which directories you use most frequently to facilitate navigation
+echo 'eval "$(zoxide init bash)"' > ~/.bash_profile
+
+cargo install tealdeer        # A very fast implementation of tldr in Rust (man for lazy people)
+tldr --update                 # To populate tldr's cache
 
 # use exa with icons and git status instead of builtin ls
 # this is in .bash_profile already
