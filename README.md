@@ -120,7 +120,7 @@ PATH="/usr/local/opt/node@20/bin:$PATH" npm install -g yarn
 
 ### Rust-based utilities
 cargo install ripgrep         # Often considered the fastest regex search tool available
-cargo install --git https://github.com/ogham/exa.git  # An improvement over ls with more features and better defaults
+cargo install eza             # An improvement over ls with more features and better defaults
 
 cargo install zoxide          # Smarter cd command which remembers which directories you use most frequently to facilitate navigation
 echo 'eval "$(zoxide init bash)"' > ~/.bash_profile
@@ -128,9 +128,9 @@ echo 'eval "$(zoxide init bash)"' > ~/.bash_profile
 cargo install tealdeer        # A very fast implementation of tldr in Rust (man for lazy people)
 tldr --update                 # To populate tldr's cache
 
-# use exa with icons and git status instead of builtin ls
+# Use eza with icons and git status instead of builtin ls
 # this is in .bash_profile already
-alias ls="exa --all --group-directories-first --icons --level=2"  # default level for --tree
+alias ls="eza --all --group-directories-first --icons --level=2"  # default level for --tree
 alias ll="ls --long --sort=age --git --time=modified --time-style=iso"
 ```
 
