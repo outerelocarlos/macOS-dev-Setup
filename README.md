@@ -134,14 +134,39 @@ alias ls="eza --all --group-directories-first --icons --level=2"  # default leve
 alias ll="ls --long --sort=age --git --time=modified --time-style=iso"
 ```
 
-#### iTerm [nerd font](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md)
+### Casks
+
+#### My selection
 
 ```bash
-brew install --cask iterm2
-brew install --cask homebrew/cask-fonts/font-inconsolata-lgc-nerd-font
+# Docker CE - docker.com/community-edition - Open Docker.app manually to install helper and to enable CLI
+brew install --cask docker
+brew install docker-compose
+
+# Visual Studio Code
+brew install --cask visual-studio-code
+
+# WireGuard VPN
+brew install wireguard-go
+brew install wireguard-tools
+
+# VLC media player
+brew install --cask vlc
+
+# Rectangle (a window manaer of sorts)
+brew install --cask rectangle
+
+# betterdisplay (easy-to-access display settings)
+brew install --cask betterdisplay
+
+# mos (advanced mouse settings)
+brew install --cask mos
+
+# maccy (clipboard history)
+brew install --cask maccy
 ```
 
-#### Casks
+#### David' selection
 
 ```bash
 # Docker CE - docker.com/community-edition - Open Docker.app manually to install helper and to enable CLI
@@ -181,8 +206,14 @@ brew install --cask maccy
 brew install --cask mactex-no-gui
 ```
 
+#### iTerm [nerd font](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md)
 
-#### Mac App Store (MAS)
+```bash
+brew install --cask iterm2
+brew install --cask homebrew/cask-fonts/font-inconsolata-lgc-nerd-font
+```
+
+### Mac App Store (MAS)
 
 When launching apps for the first time, you might have to accept the dev under `System Preferences/Security & Privacy/General`
 
